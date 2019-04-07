@@ -3,6 +3,7 @@ package com.pnodder.bikeshop.dao
 import com.pnodder.bikeshop.domain.Bike
 import com.pnodder.bikeshop.enums.Colour
 import com.pnodder.bikeshop.enums.Style
+import org.slf4j.LoggerFactory
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.stereotype.Component
@@ -11,6 +12,8 @@ import java.sql.ResultSet
 
 @Component
 class BikeDao(private val jdbcTemplate: JdbcTemplate, private val namedParamJdbcTemplate: NamedParameterJdbcTemplate) : BaseDao<Bike> {
+
+    private val log = LoggerFactory.getLogger(BikeDao::class.java)
 
     val bikeStatementSetter = { ps: PreparedStatement, b: Bike ->
         ps.setString(1, b.make)
@@ -51,6 +54,7 @@ class BikeDao(private val jdbcTemplate: JdbcTemplate, private val namedParamJdbc
     }
 
     override fun insert(obj: Bike): Int {
+        log.info("Inserting bike: {}", obj)
         val sql = "INSERT INTO bike (make, model, colour, style, price, stock) VALUES (?, ?, ?, ?, ?, ?)"
         return jdbcTemplate.update(sql, obj.make, obj.model, obj.colour.ordinal, obj.style.ordinal, obj.price,
                 obj.stock)

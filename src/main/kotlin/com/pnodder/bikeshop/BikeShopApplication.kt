@@ -31,15 +31,6 @@ class BikeShopApplication {
     @Bean
     fun namedParamJdbcTemplate() = NamedParameterJdbcTemplate(dataSource())
 
-//    @Bean
-//    fun init(os: OrderService, cs: CustomerService): CommandLineRunner {
-//        return CommandLineRunner {
-//            val c = cs.findById(1).get()
-//            val o = Order(5, c, 11, 0, LocalDate.now(), 99.99)
-//            os.save(o)
-//        }
-//    }
-
 }
 
 fun main(args: Array<String>) {

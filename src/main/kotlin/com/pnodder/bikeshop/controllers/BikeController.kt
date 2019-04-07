@@ -14,7 +14,7 @@ class BikeController(private val bikeService: BikeService) {
     @GetMapping("/bikes")
     fun all() = bikeService.findAll()
 
-    @GetMapping("/bike/{id}")
+    @GetMapping("/bikes/{id}")
     fun bike(@PathVariable id: Int) = bikeService.findById(id)
 
 }

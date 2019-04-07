@@ -22,7 +22,6 @@ import java.time.LocalDateTime
 @ExtendWith(SpringExtension::class)
 @ContextConfiguration(classes = [BikeShopApplicationTestConfig::class])
 @ActiveProfiles("dev")
-@TestPropertySource("/test.properties")
 /**
  * Uses an embedded h2 data source for dao tests
  */

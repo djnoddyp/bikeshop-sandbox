@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component
 import java.time.LocalDateTime
 
 @Component
-class OrderReceiver(val taskExecutor: ThreadPoolTaskExecutor, private val rabbitTemplate: RabbitTemplate) {
+class OrderReceiver(val taskExcecutor: ThreadPoolTaskExecutor, private val rabbitTemplate: RabbitTemplate) {
 
     val log: Logger = LoggerFactory.getLogger(OrderReceiver::class.java)
 
     fun receiveOrder(order: Order) {
-        log.info("Received order for: ${order.customer.email} at ${LocalDateTime.now()}")
+        log.info("Received order for: ${order.customerId} at ${LocalDateTime.now()}")
     }
 
 }
